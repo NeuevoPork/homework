@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tonight's Movie — iOS MVP Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="top-bar">
+        <div>
+          <p class="eyebrow">Tonight’s pick</p>
+          <h1>Good evening, Alex</h1>
+        </div>
+        <button id="swapButton" class="btn ghost" aria-label="Swap recommendation">Swap</button>
+      </header>
+
+      <section class="card recommendation-card" aria-live="polite">
+        <p class="badge" id="providerBadge">Max</p>
+        <h2 id="movieTitle">Michael Clayton</h2>
+        <p id="movieMeta" class="meta">2007 • 1h 59m • Legal Thriller • R</p>
+        <p id="movieSynopsis" class="synopsis">
+          A “fixer” at a prestigious law firm is pulled into a corporate corruption case that could implode his career.
+        </p>
+
+        <div class="score-row">
+          <span class="chip">IMDb <strong id="imdbScore">7.2</strong></span>
+          <span class="chip">Letterboxd <strong id="letterboxdScore">3.7</strong></span>
+        </div>
+
+        <div>
+          <h3>Why we picked this</h3>
+          <ul id="whyList">
+            <li>You rate cerebral thrillers 8.1/10 on average.</li>
+            <li>Shares tone with <em>Zodiac</em> and <em>Sicario</em>.</li>
+            <li>Strong critic consensus with low mainstream fatigue.</li>
+          </ul>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn primary" id="playButton">Play on <span id="providerLabel">Max</span></button>
+          <button class="btn ghost">Save</button>
+          <button class="btn ghost">Not tonight</button>
+        </div>
+      </section>
+
+      <section>
+        <div class="lane-header">
+          <h3>Mood lanes</h3>
+          <button id="shuffleLane" class="btn ghost small">Shuffle lane</button>
+        </div>
+        <div class="lane" id="laneContainer"></div>
+      </section>
+
+      <section class="card settings">
+        <h3>Tonight settings</h3>
+        <label class="control-row">
+          <span>No horror</span>
+          <input type="checkbox" checked />
+        </label>
+        <label class="control-row">
+          <span>No subtitles tonight</span>
+          <input type="checkbox" />
+        </label>
+        <label class="control-row">
+          <span>Adventurousness</span>
+          <input type="range" min="1" max="5" value="3" />
+        </label>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
