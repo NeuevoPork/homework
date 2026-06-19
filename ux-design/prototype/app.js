@@ -43,6 +43,15 @@ const recommendations = [
   }
 ];
 
+const tickerItems = [
+  ["Trending tonight", "Dune: Part Two"],
+  ["New on Max", "The Penguin"],
+  ["Letterboxd climbing", "Anora"],
+  ["Critics' pick", "The Zone of Interest"],
+  ["Leaving soon", "No Country for Old Men"],
+  ["Just added", "Past Lives"]
+];
+
 let index = 0;
 
 const refs = {
@@ -54,8 +63,23 @@ const refs = {
   letterboxd: document.getElementById("letterboxdScore"),
   synopsis: document.getElementById("movieSynopsis"),
   whyList: document.getElementById("whyList"),
-  laneContainer: document.getElementById("laneContainer")
+  laneContainer: document.getElementById("laneContainer"),
+  tickerTrack: document.getElementById("tickerTrack")
 };
+
+function renderTicker() {
+  refs.tickerTrack.innerHTML = "";
+  // Render the list twice so the -50% scroll animation loops seamlessly.
+  for (let pass = 0; pass < 2; pass += 1) {
+    tickerItems.forEach(([label, title]) => {
+      const span = document.createElement("span");
+      span.className = "ticker__item";
+      span.innerHTML = `${label} <strong>${title}</strong>`;
+      if (pass === 1) span.setAttribute("aria-hidden", "true");
+      refs.tickerTrack.appendChild(span);
+    });
+  }
+}
 
 function render(movie) {
   refs.title.textContent = movie.title;
@@ -93,4 +117,5 @@ document.getElementById("playButton").addEventListener("click", () => {
   alert(`Prototype action: open ${recommendations[index].provider}`);
 });
 
+renderTicker();
 render(recommendations[index]);
