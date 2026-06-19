@@ -1,0 +1,5 @@
+# Netlify configuration
+# The prototype is a static site (no build step); publish it directly so
+# index.html is served at the site root.
+[build]
+  publish = "ux-design/prototype"
